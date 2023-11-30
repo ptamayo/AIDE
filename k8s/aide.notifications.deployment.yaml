@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aide-api-notifications-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aide-api-notifications
+  template:
+    metadata:
+      labels:
+        app: aide-api-notifications
+    spec:
+      imagePullSecrets:
+        - name: my-registry-key
+      containers:
+        - name: aide-api-notifications-node
+          image: aideguru/aide-api-notifications:latest
+          imagePullPolicy: Always
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: K8sDev
+            - name: AIDE_DEV_NAME
+              value: Primo
+            - name: TZ
+              value: America/Los_Angeles

@@ -1,0 +1,3018 @@
+{
+	"Routes": [
+		{
+			"DownstreamPathTemplate": "/user/authenticate",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/user/authenticate",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/user/logout",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/user/logout",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/user",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/user",
+			"UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/user/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/user/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/user/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/user/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/user/listByRoleIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/user/listByRoleIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/user/profile",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/user/profile",
+			"UpstreamHttpMethod": [ "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/user/reset",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/user/reset",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/store",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/store",
+			"UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/store/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/store/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/store/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/store/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/store/{companyId}/users",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/store/{companyId}/users",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/insuranceCompany",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCompany",
+			"UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCompany/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCompany/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCompany/list/enabled",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCompany/list/enabled",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCompany/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCompany/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCompany/{id}/documents/{claimTypeId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCompany/{id}/documents/{claimTypeId}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCompany/{companyId}/users",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCompany/{companyId}/users",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/settings",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/settings",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/probatoryDocument",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/probatoryDocument",
+			"UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/probatoryDocument/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/probatoryDocument/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/probatoryDocument/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/probatoryDocument/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/documents",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/documents",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/documents",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/documents",
+			"UpstreamHttpMethod": [ "Get", "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/export",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/export/{exportTypeId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/export/{exportTypeId}",
+			"UpstreamHttpMethod": [ "Get", "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/export/{exportTypeId}/settings",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceProbatoryDocument/insuranceCompany/{insuranceCompanyId}/serviceType/{claimTypeId}/export/{exportTypeId}/settings",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/insuranceCollage",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCollage",
+			"UpstreamHttpMethod": [ "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCollage/{id}/delete",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCollage/{id}/delete",
+			"UpstreamHttpMethod": [ "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCollage/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCollage/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceCollage/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5004
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceCollage/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/claimType",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claimType",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claimDocument/document",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claimDocument/document",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claimDocument/document?h={hash}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claimDocument/document?h={hash}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/claim",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claim",
+			"UpstreamHttpMethod": [ "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claim/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claim/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claim/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claim/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claim/{claimId}/signature",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claim/{claimId}/signature",
+			"UpstreamHttpMethod": [ "Get", "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claim/{claimId}/status",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claim/{claimId}/status",
+			"UpstreamHttpMethod": [ "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claim/removeStaledOrders",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claim/removeStaledOrders",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claim/{claimId}/externalOrderNumber/{externalOrderNumber}/verify",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claim/{claimId}/externalOrderNumber/{externalOrderNumber}/verify",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/claimProbatoryDocument/media",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claimProbatoryDocument/media",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/claimProbatoryDocument/media?h={hash}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/claimProbatoryDocument/media?h={hash}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/messageBroker/emailClaimReceipt",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/messageBroker/emailClaimReceipt",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/messageBroker/zipClaimFiles",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/messageBroker/zipClaimFiles",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/messageBroker/pdfExportClaimFiles",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/messageBroker/pdfExportClaimFiles",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/messageBroker/zipAndEmailClaimFiles",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/messageBroker/zipAndEmailClaimFiles",
+			"UpstreamHttpMethod": [ "Get", "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/messageBroker/dashboard1ClaimsReport",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5001
+				}
+			],
+			"UpstreamPathTemplate": "/api/messageBroker/dashboard1ClaimsReport",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/notificationUser",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5003
+				}
+			],
+			"UpstreamPathTemplate": "/api/notificationUser",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/notificationUser/read",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5003
+				}
+			],
+			"UpstreamPathTemplate": "/api/notificationUser/read",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/notificationHub",
+			"DownstreamScheme": "ws",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5003
+				}
+			],
+			"UpstreamPathTemplate": "/api/notificationHub"
+		},
+		{
+			"DownstreamPathTemplate": "/notificationHub/negotiate",
+			"DownstreamScheme": "ws",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 5003
+				}
+			],
+			"UpstreamPathTemplate": "/api/notificationHub/negotiate"
+		},
+
+		{
+			"DownstreamPathTemplate": "/vehiclemake",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/vehiclemake",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/vehiclemodel/make/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/vehiclemodel/make/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/parttype",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/parttype",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/parttype/listbyids",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/parttype/listbyids",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/product/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/product/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder/insuranceCompany/{insuranceCompanyId}/invoices",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder/insuranceCompany/{insuranceCompanyId}/invoices",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder/invoice/{uuid}/reject",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder/invoice/{uuid}/reject",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder/{id}",
+			"UpstreamHttpMethod": [ "Put", "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder/{id}/item",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder/{id}/item",
+			"UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder/{id}/ship",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder/{id}/ship",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder/{id}/exportZip",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder/{id}/exportZip",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrder/{id}/downloadZip",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrder/{id}/downloadZip",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/insuranceShippingOrderStatus",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceShippingOrderStatus",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/insuranceshippingorderitemstatus",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insuranceshippingorderitemstatus",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/mxcomprobantestatus",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/mxcomprobantestatus",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/pricelist",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/pricelist",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/pricelist/prices",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/pricelist/prices",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/pricelist/insert",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/pricelist/insert",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/insurancecompanyinfo/list/enabled",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insurancecompanyinfo/list/enabled",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insurancecompanyinfo/insuranceCompany/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insurancecompanyinfo/insuranceCompany/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insurancecompanyinfo",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/insurancecompanyinfo",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/clienttype",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/clienttype",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/glasstype",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/glasstype",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/preorder/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/preorder/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/preorder/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/preorder/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/preorder",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/preorder",
+			"UpstreamHttpMethod": [ "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/preorder/{id}/delete",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/preorder/{id}/delete",
+			"UpstreamHttpMethod": [ "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bank",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/bank",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/gender",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/gender",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/identificationtype",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/identificationtype",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/maritalstatus",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/maritalstatus",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/orderstatus",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/orderstatus",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/paymenttype",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/paymenttype",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/referralsource",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/referralsource",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/relationship",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/relationship",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/vehiclecolor",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/vehiclecolor",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingcarrier",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingcarrier",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/rejectFilesReason",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/rejectFilesReason",
+			"UpstreamHttpMethod": [
+				"Get"
+			]
+		},
+		{
+			"DownstreamPathTemplate": "/rejectInvoiceReason",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/rejectInvoiceReason",
+			"UpstreamHttpMethod": [
+				"Get"
+			]
+		},
+		{
+			"DownstreamPathTemplate": "/serviceauthreason",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/serviceauthreason",
+			"UpstreamHttpMethod": [
+				"Get"
+			]
+		},
+		{
+			"DownstreamPathTemplate": "/deductibledepositpaymenttype",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/deductibledepositpaymenttype",
+			"UpstreamHttpMethod": [
+				"Get"
+			]
+		},
+		{
+			"DownstreamPathTemplate": "/ordercancelationreason",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/ordercancelationreason",
+			"UpstreamHttpMethod": [
+				"Get"
+			]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorderstatus",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorderstatus",
+			"UpstreamHttpMethod": [
+				"Get"
+			]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorderitemstatus",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorderitemstatus",
+			"UpstreamHttpMethod": [
+				"Get"
+			]
+		},
+		{
+			"DownstreamPathTemplate": "/order/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/folio/{folio}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/folio/{folio}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/{id}/authorize",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/{id}/authorize",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/documents/approve",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/documents/approve",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/documents/reject",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/documents/reject",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/documents/hold",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/documents/hold",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/{id}/status",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/{id}/status",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order",
+			"UpstreamHttpMethod": [ "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/{id}/delete",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/{id}/delete",
+			"UpstreamHttpMethod": [ "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/{id}/item",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/{id}/item",
+			"UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/preorder/{id}/item",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/preorder/{id}/item",
+			"UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/territoryregion",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/territoryregion",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/territorystate",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/territorystate",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/storeinfo/list/enabled",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/storeinfo/list/enabled",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/storeinfo/store/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/storeinfo/store/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/storeinfo",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/storeinfo",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bulletin/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6004
+				}
+			],
+			"UpstreamPathTemplate": "/api/bulletin/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bulletin/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6004
+				}
+			],
+			"UpstreamPathTemplate": "/api/bulletin/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bulletin",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6004
+				}
+			],
+			"UpstreamPathTemplate": "/api/bulletin",
+			"UpstreamHttpMethod": [ "Post", "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bulletin/{id}/delete",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6004
+				}
+			],
+			"UpstreamPathTemplate": "/api/bulletin/{id}/delete",
+			"UpstreamHttpMethod": [ "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bulletin/{id}/read/{userReadConfirmationCode}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6004
+				}
+			],
+			"UpstreamPathTemplate": "/api/bulletin/{id}/read/{userReadConfirmationCode}",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bulletin/region/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6004
+				}
+			],
+			"UpstreamPathTemplate": "/api/bulletin/region/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bulletin/state/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6004
+				}
+			],
+			"UpstreamPathTemplate": "/api/bulletin/state/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bulletin/store/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6004
+				}
+			],
+			"UpstreamPathTemplate": "/api/bulletin/store/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxRegimenFiscal",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxRegimenFiscal",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxRegimenFiscal/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxRegimenFiscal/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxRegimenFiscal/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxRegimenFiscal/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoComprobante",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoComprobante",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoComprobante/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoComprobante/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoComprobante/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoComprobante/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxUsoCfdi",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxUsoCfdi",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxUsoCfdi/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxUsoCfdi/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxUsoCfdi/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxUsoCfdi/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxMoneda",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxMoneda",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxMoneda/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxMoneda/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxMoneda/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxMoneda/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxFormaPago",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxFormaPago",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxFormaPago/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxFormaPago/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxFormaPago/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxFormaPago/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxMetodoPago",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxMetodoPago",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxMetodoPago/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxMetodoPago/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxMetodoPago/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxMetodoPago/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxClaveProductoServicio",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxClaveProductoServicio",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxClaveProductoServicio/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxClaveProductoServicio/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxClaveProductoServicio/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxClaveProductoServicio/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxClaveUnidad",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxClaveUnidad",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxClaveUnidad/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxClaveUnidad/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxClaveUnidad/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxClaveUnidad/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoImpuesto",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoImpuesto",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoImpuesto/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoImpuesto/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoImpuesto/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoImpuesto/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoFactor",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoFactor",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoFactor/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoFactor/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxTipoFactor/listByIds",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxTipoFactor/listByIds",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxMunicipio/{paisId}/{estadoId}/municipios",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/{paisId}/{estadoId}/municipios",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxColonia/{paisId}/{estadoId}/{municipioId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/{paisId}/{estadoId}/municipios/{municipioId}/colonias",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxMunicipio/{paisId}/{estadoId}/municipios/{municipioId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/{paisId}/{estadoId}/municipios/{municipioId}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxLocalidad/{paisId}/{estadoId}/localidades",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/{paisId}/{estadoId}/localidades",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxLocalidad/{paisId}/{estadoId}/localidades/{localidadId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/{paisId}/{estadoId}/localidades/{localidadId}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxEstado/{paisId}/estados",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/{paisId}/estados",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxEstado/{paisId}/{estadoId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/{paisId}/{estadoId}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxPais/paises",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/paises",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxPais/{paisId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/domicilio/{paisId}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxColonia/{codigoPostal}/colonias",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/codigopostal/{codigoPostal}/colonias",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxColonia/{codigoPostal}/{coloniaId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/codigopostal/{codigoPostal}/{coloniaId}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxCodigoPostal/{codigoPostal}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/codigopostal/{codigoPostal}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxEmisor",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxEmisor",
+			"UpstreamHttpMethod": [ "Get", "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxEmisor/certificate",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxEmisor/certificate",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxEmisor/certificate/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxEmisor/certificate/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxEmisor/certificate/number/{noCertificado}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxEmisor/certificate/number/{noCertificado}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxEmisor/certificate/current",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxEmisor/certificate/current",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxInfoAseguradora/insuranceCompany/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxInfoAseguradora/insuranceCompany/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxInfoAseguradora",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxInfoAseguradora",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/{orderId}/prefacturar",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/{orderId}/prefacturar",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/{UUID}/regenerarpdf",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/{UUID}/regenerarpdf",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/{UUID}/creditNoteAndReinvoice",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/{UUID}/creditNoteAndReinvoice",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/{UUID}/cancelAndReinvoice",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/{UUID}/cancelAndReinvoice",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/{UUID}/reprint",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/{UUID}/reprint",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/{UUID}/media?t={fileType}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/{UUID}/media?t={fileType}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/order/{orderId}/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/order/{orderId}/list",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/conciliacion/{bankDepositId}/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/conciliacion/{bankDepositId}/list",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxComprobante/{orderId}/facturaIngresada",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxComprobante/{orderId}/facturaIngresada",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/acroform/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/acroform/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/acroform/insurancecompanyid/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/acroform/insurancecompanyid/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/acroform/media/order/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/acroform/media/order/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/acroform/render/order/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/acroform/render/order/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/acroform/merge/order/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/acroform/merge/order/{id}",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/acroform/order/{orderId}/media/{mediaId}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/acroform/order/{orderId}/media/{mediaId}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/purchaseOrder/order/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/purchaseOrder/order/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/purchaseOrder/{id}/threshold",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/purchaseOrder/{id}/threshold",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/ordersurvey/order/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/ordersurvey/order/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/ordersurvey/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/ordersurvey/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/ordersurvey/update",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/ordersurvey/update",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxFacturaTaller/purchaseOrder/{id}/upload",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxFacturaTaller/purchaseOrder/{id}/upload",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxFacturaTaller/{uuid}/abandon",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxFacturaTaller/{uuid}/abandon",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxFacturaTaller/{UUID}/media?t={fileType}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxFacturaTaller/{UUID}/media?t={fileType}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorder/store/{storeId}/orders",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorder/store/{storeId}/orders",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorder",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorder",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorder/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorder/{id}",
+			"UpstreamHttpMethod": [ "Put", "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorder/{id}/item",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorder/{id}/item",
+			"UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorder/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorder/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorder/{id}/ship",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorder/{id}/ship",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/shippingorder/{id}/receive",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/shippingorder/{id}/receive",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/MxAddenda",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/MxAddenda",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/insurancecompanywebservice",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6001
+				}
+			],
+			"UpstreamPathTemplate": "/api/insurancecompanywebservice",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingOrders/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/exportOrders",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingSabanaDeDatos/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/exportSabanaDeDatos",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingSabanaDeDatos/stream",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/streamSabanaDeDatos",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingMxComprobante/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/exportMxComprobante",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingMxFacturaTaller/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/exportMxFacturaTaller",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingJournalEntry/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/exportJournalEntry",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingSAPLayoutDetailTimeframe/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/exportSAPLayoutDetailTimeframe",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingSAPLayoutDetail/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/exportSAPLayoutDetail",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/reportingMasterPaymentDetail/export",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6006
+				}
+			],
+			"UpstreamPathTemplate": "/api/reporting/exportMasterPaymentDetail",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/mapfreService/poliza",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6007
+				}
+			],
+			"UpstreamPathTemplate": "/api/mapfreService/poliza",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/mapfreService/costoCristal",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6007
+				}
+			],
+			"UpstreamPathTemplate": "/api/mapfreService/costoCristal",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/{orderId}/orderItem/{orderItemId}/authorizationFolio/verify",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/{orderId}/orderItem/{orderItemId}/authorizationFolio/verify",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/order/{orderId}/claimNumber/verify",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/order/{orderId}/claimNumber/verify",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/followUps",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6014
+				}
+			],
+			"UpstreamPathTemplate": "/api/followUps",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/followUps/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6014
+				}
+			],
+			"UpstreamPathTemplate": "/api/followUps/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit/{id}/item",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit/{id}/item",
+			"UpstreamHttpMethod": [ "Post", "Delete" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit/{id}/itemsByFolio",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit/{id}/itemsByFolio",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit/{id}/item/{uuid}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit/{id}/item/{uuid}",
+			"UpstreamHttpMethod": [ "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit/{id}/item/{uuid}/clear",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit/{id}/item/{uuid}/clear",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit/insuranceCompany/{id}/invoices",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit/insuranceCompany/{id}/invoices",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/bankDeposit/{bankDepositId}/accept",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/bankDeposit/{bankDepositId}/accept",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/run",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/run",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}/generateZip",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}/generateZip",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}/outputFile",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}/outputFile",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}/inputFile",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}/inputFile",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}/vendorPaymentStatus",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}/vendorPaymentStatus",
+			"UpstreamHttpMethod": [ "Put" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}/uploadPayment",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}/uploadPayment",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}/gmPayment",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}/gmPayment",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/vendorPayment/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/vendorPayment/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/vendorPayment/store/{storeId}/list",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/vendorPayment/store/{storeId}/list",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}/zip/{fileId}/download",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}/zip/{fileId}/download",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/billPaymentMaster/{id}/txt/{fileId}/download",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6003
+				}
+			],
+			"UpstreamPathTemplate": "/api/billPaymentMaster/{id}/txt/{fileId}/download",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+
+		{
+			"DownstreamPathTemplate": "/hdisucursal/{id}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6015
+				}
+			],
+			"UpstreamPathTemplate": "/api/hdi/sucursal/{id}",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/hdisucursal",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6015
+				}
+			],
+			"UpstreamPathTemplate": "/api/hdi/sucursal",
+			"UpstreamHttpMethod": [ "Post" ]
+		},
+		{
+			"DownstreamPathTemplate": "/hdi/poliza",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6015
+				}
+			],
+			"UpstreamPathTemplate": "/api/hdi/poliza",
+			"UpstreamHttpMethod": [ "Post" ]
+
+		},
+		{
+			"DownstreamPathTemplate": "/hdi/precios",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6015
+				}
+			],
+			"UpstreamPathTemplate": "/api/hdi/precios",
+			"UpstreamHttpMethod": [ "Post" ]
+
+		},
+		{
+			"DownstreamPathTemplate": "/hdi/siniestro",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6015
+				}
+			],
+			"UpstreamPathTemplate": "/api/hdi/siniestro",
+			"UpstreamHttpMethod": [ "Post" ]
+
+		},
+		{
+			"DownstreamPathTemplate": "/fraudRing/order/{id}/analysis",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/fraudRing/order/{id}/analysis",
+			"UpstreamHttpMethod": [ "Get" ]
+		},
+		{
+			"DownstreamPathTemplate": "/fraudRing/order/{id}/resolution",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "host.docker.internal",
+					"Port": 6002
+				}
+			],
+			"UpstreamPathTemplate": "/api/fraudRing/order/{id}/resolution",
+			"UpstreamHttpMethod": [ "Put" ]
+		}
+	],
+	"GlobalConfiguration": {
+		"BaseUrl": "http://localhost:80"
+	}
+}

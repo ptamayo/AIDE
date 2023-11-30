@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aide-api-claims-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aide-api-claims
+  template:
+    metadata:
+      labels:
+        app: aide-api-claims
+    spec:
+      imagePullSecrets:
+        - name: my-registry-key
+      containers:
+        - name: aide-api-claims-node
+          image: aideguru/aide-api-claims:latest
+          imagePullPolicy: Always
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: K8sDev
+            - name: AIDE_DEV_NAME
+              value: Primo
+            - name: TZ
+              value: America/Los_Angeles

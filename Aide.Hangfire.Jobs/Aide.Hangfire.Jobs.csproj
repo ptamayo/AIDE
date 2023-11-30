@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aide.Core.Cloud.Azure" Version="2023.10.28.2" />
+    <PackageReference Include="Aide.Core.Media" Version="2023.10.28.2" />
+    <PackageReference Include="Hangfire.Core" Version="1.8.5" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.2" />
+    <PackageReference Include="QuestPDF" Version="2023.10.0" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.6" />
+    <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="7.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aide.Hangfire.Common\Aide.Hangfire.Common.csproj" />
+    <ProjectReference Include="..\Aide.Hangfire.Domain\Aide.Hangfire.Domain.csproj" />
+    <ProjectReference Include="..\Aide.Hangfire.Services\Aide.Hangfire.Services.csproj" />
+    <ProjectReference Include="..\Aide.Reports.Models\Aide.Reports.Models.csproj" />
+  </ItemGroup>
+
+</Project>

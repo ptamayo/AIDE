@@ -1,0 +1,30 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+bin/
+obj/
+
+# IDE - VS
+.vs/
+
+.config/
+PublishProfiles/
+*.csproj.user
+*.log*.txt
+
+# compiled output
+dist/
+
+# compodoc
+documentation/
+
+# dependencies
+node_modules/
+
+# msi installers
+msi/
+
+# Mac
+.DS_Store
+
+# NOTE: if need remove more folders then go to bash and run:  git rm -r --cached */obj/
