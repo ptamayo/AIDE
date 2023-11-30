@@ -1,0 +1,77 @@
+<div class="main-loading-shade" *ngIf="isLoadingPage">
+    <mat-spinner *ngIf="isLoadingPage"></mat-spinner>
+</div>
+
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span *ngIf="action === 'Add'" i18n>Add collage</span>
+        <span *ngIf="action === 'Edit'" i18n>Edit collage</span>
+        <!-- <span class="mat-toolbar-row-spacer"></span> -->
+        <!-- <span>
+            <button type="button" 
+                mat-raised-button color="primary" 
+                (click)="upsert()"
+                [disabled]="saveBtnIsDisabled || !myForm.valid"
+                i18n="@@saveButton">Save</button>
+        </span> -->
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="main-table-container">
+    <div [formGroup]="myForm" class="form-group-container">
+        <mat-form-field>
+            <input matInput 
+                placeholder="Collage's Name" 
+                [formControl]="collageName"
+                autocomplete="off"
+                i18n-placeholder="@@collageName">
+            <mat-error *ngIf="collageName.invalid" i18n="@@mustEnterValue">You must enter a value</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select 
+                placeholder="Service Type" 
+                [formControl]="claimType" 
+                (selectionChange)="onClaimTypeSelectionChange($event)"
+                i18n-placeholder="@@serviceType">
+                <mat-option *ngFor="let claimType of claimTypes" [value]="claimType.id">
+                    {{claimType.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="claimType.invalid" i18n="@@mustChooseValue">You must choose a value</mat-error>
+        </mat-form-field>
+
+        <cdk-virtual-scroll-viewport itemSize="6" class="checklist-viewport">
+            <div *cdkVirtualFor="let item of checklistItems" class="checklist-item">
+                <mat-checkbox [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}" class="checklist-item-detail">
+                    {{item.name}}
+                </mat-checkbox>
+            </div>
+        </cdk-virtual-scroll-viewport>
+        <p></p>
+
+        <mat-form-field>
+            <input matInput 
+                placeholder="Collage's Columns" 
+                [formControl]="collageColumns"
+                autocomplete="off"
+                i18n-placeholder="@@collageColumns">
+            <mat-error *ngIf="collageColumns.invalid" i18n>You must enter a valid number (minimum accepted is 1)</mat-error>
+        </mat-form-field>
+    </div>
+</div>
+
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>
+            <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!myForm.valid || saveBtnIsDisabled || isLoadingPage" i18n="@@saveButton">Save</button>
+        </span>
+        <span style="padding-left: 16px;">
+            <button mat-raised-button color="warn" (click)="onDelete()" [disabled]="saveBtnIsDisabled || isLoadingPage" i18n="@@deleteButton" *ngIf="collageId">Delete</button>
+        </span>
+        <span class="mat-toolbar-row-spacer"></span>
+        <span>
+            <button mat-raised-button (click)="close(null)" [disabled]="saveBtnIsDisabled" i18n="@@closeButton">Close</button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>

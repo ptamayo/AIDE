@@ -1,0 +1,46 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>
+            {{title}}
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content [formGroup]="form">
+    <div style="text-align: center;" *ngIf="orientation != 0">
+        <span>
+            <span i18n>NOTE: The camera orientation should be</span>&nbsp;
+            <span i18n style="font-weight: bold; text-decoration: underline;" *ngIf="orientation == 1">Portrait</span><span i18n style="font-weight: bold; text-decoration: underline;" *ngIf="orientation == 2">Landscape</span>&nbsp;
+            <!-- <mat-icon *ngIf="orientation == 1">stay_primary_portrait</mat-icon><mat-icon *ngIf="orientation == 2">stay_primary_landscape</mat-icon> -->
+        </span>
+    </div>
+    <div style="text-align: center;" *ngIf="orientation != 0">
+        <img [src]="getVisualGuideline('Portrait')" [height]="getVisualGuidelineHeaight()">
+        <img [src]="getVisualGuideline('Landscape')" [height]="getVisualGuidelineHeaight()">
+    </div>
+    <br/>
+    <div class="form-group">
+        <input  name="image"
+                type="file"
+                accept="{{acceptedFileExtensions}}"
+                (change)="onSelectedFile($event)">
+        <mat-error *ngIf="image.touched && image.invalid" i18n="@@mustChooseFile">You must choose a file.</mat-error>
+        <mat-error *ngIf="!isFileExtensionAllowed" i18n="@@fileExtensionNotAllowed">The file extension is not allowed.</mat-error>
+    </div>
+    <div class="progress form-group" *ngIf="progress > 0">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>
+            <button mat-raised-button (click)="close()" [disabled]="btnIsDisabled" i18n="@@closeButton">Close</button>
+        </span>
+        <span class="mat-toolbar-row-spacer"></span>
+        <span>
+            <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="btnIsDisabled || !form.valid || !isFileExtensionAllowed" i18n="@@saveButton">Save</button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>

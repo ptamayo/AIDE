@@ -1,0 +1,57 @@
+<mat-tab-group>
+    <!-- PDF -->
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">picture_as_pdf</mat-icon>
+            <span>PDF</span>
+        </ng-template>
+        <mat-accordion class="accordion-headers-align" multi>
+            <mat-expansion-panel (opened)="onAccordionItemOpened(claimType, 1)" *ngFor="let claimType of _claimTypes">
+                <mat-expansion-panel-header style="background: #F5F5F5;">
+                    <mat-panel-title>
+                        {{claimType.name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <span i18n>Export documents</span>
+                        <mat-icon>settings</mat-icon>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <app-company-export-docs 
+                    [exportTypeId]="1" 
+                    [companyId]="_companyId" 
+                    [claimType]="claimType.id" 
+                    [companyClaimTypeSettings]="getCompanyClaimTypeSettings(claimType.id)"
+                    [allProbatoryDocuments]="getAllProbatoryDocuments(claimType.id)"
+                    [insuranceProbatoryDocuments]="getInsuranceProbatoryDocuments(claimType.id)"></app-company-export-docs>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-tab>
+
+    <!-- ZIP -->
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">perm_media</mat-icon>
+            <span>ZIP</span>
+        </ng-template>
+        <mat-accordion class="accordion-headers-align" multi>
+            <mat-expansion-panel (opened)="onAccordionItemOpened(claimType, 2)" *ngFor="let claimType of _claimTypes">
+                <mat-expansion-panel-header style="background: #F5F5F5;">
+                    <mat-panel-title>
+                        {{claimType.name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <span i18n>Export documents</span>
+                        <mat-icon>settings</mat-icon>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <app-company-export-docs 
+                    [exportTypeId]="2" 
+                    [companyId]="_companyId" 
+                    [claimType]="claimType.id" 
+                    [companyClaimTypeSettings]="getCompanyClaimTypeSettings(claimType.id)"
+                    [allProbatoryDocuments]="getAllProbatoryDocuments(claimType.id)"
+                    [insuranceProbatoryDocuments]="getInsuranceProbatoryDocuments(claimType.id)"></app-company-export-docs>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-tab>
+</mat-tab-group>

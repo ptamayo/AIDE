@@ -1,0 +1,22 @@
+.full-width {
+    width: 100%;
+}
+
+.verify-btn-column {
+    width: 80px;
+    text-align: right;
+}
+
+.add-company-btn-column {
+    width: 25px;
+    text-align: right;
+}
+
+.delete-company-btn-column {
+    width: 20px;
+    text-align: right;
+}
+
+.column-actions {
+    width: 50px;
+}

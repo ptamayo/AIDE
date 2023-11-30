@@ -1,0 +1,105 @@
+<ng-container>
+
+    <mat-toolbar style="background-color: white;">
+        <mat-toolbar-row class="full-layout-header">
+            <span>
+                <a mat-icon-button (click)="sidenavm.toggle()" *ngIf="isMobile">
+                    <mat-icon>menu</mat-icon>
+                </a>
+            </span>
+            <span><img [src]="urlLogo()"></span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <!-- <app-header></app-header> -->
+                <a mat-icon-button *ngIf="unreadNotificationsCount === 0" (click)="closeSidenavNotifications()">
+                    <mat-icon>notifications_none</mat-icon>
+                </a>
+                <a mat-icon-button *ngIf="unreadNotificationsCount > 0" (click)="closeSidenavNotifications()">
+                    <mat-icon [matBadge]="unreadNotificationsCount" matBadgeColor="warn" matBadgeSize="small">notifications_active</mat-icon>
+                </a>
+                <a mat-icon-button [style.background-color]="stringToHslColor" [matMenuTriggerFor]="menu">
+                    <span>{{ userInitials }}</span>
+                </a>
+                <a *ngIf="!isMobile" style="padding-right: 25px;">&nbsp;</a>
+                <mat-menu #menu="matMenu">
+                    <!-- <a mat-menu-item href="\en"><span>English</span></a>
+                    <a mat-menu-item href="\es"><span>Español</span></a> -->
+                    <!-- <a mat-menu-item><span>User Profile</span></a> -->
+                    <a mat-menu-item [routerLink]="['/user/profile']"><span i18n="@@userProfile">My profile</span></a>
+                    <a mat-menu-item (click)="logout()"><span i18n>Logout</span></a>
+                </mat-menu>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    
+    <mat-sidenav-container class="full-layout-container" (backdropClick)="closeSidenavNotifications()">
+        <mat-sidenav #sidenavm [mode]="!isMobile ? 'side' : 'over'" [opened]="sidenavOpened" role="navigation" class="full-layout-sidenav" [style.width]="!isMobile ? '55px' : 'auto'" [style.z-index]="!isMobile ? '1' : '1000'">
+            <!-- <app-left-panel></app-left-panel> -->
+            <mat-nav-list>
+                <a mat-list-item (click)="redirectToFromMenu(['/claim'])" *ngIf="authService.currentUser.roleId != userRole.InsuranceReadOnly">
+                    <mat-icon>add_circle</mat-icon>
+                    <span i18n="@@addClaim" [style.display]="displayMenuDescription">Add claim</span>
+                </a>
+                <a mat-list-item (click)="redirectToFromMenu2(['/dashboard/dashboard1'])">
+                    <mat-icon>home</mat-icon>
+                    <span i18n="@@listOfClaims" [style.display]="displayMenuDescription">List of claims</span>
+                </a>
+                
+                <mat-divider *ngIf="authService.currentUser.roleId == userRole.Admin"></mat-divider>
+
+                <a mat-list-item *ngIf="authService.currentUser.roleId == userRole.Admin" (click)="redirectToFromMenu(['/admin/stores'])">
+                    <mat-icon>store</mat-icon>
+                    <span i18n [style.display]="displayMenuDescription">Workshops</span>
+                </a>
+                <a mat-list-item *ngIf="authService.currentUser.roleId == userRole.Admin" (click)="redirectToFromMenu(['/admin/companies'])">
+                    <mat-icon>business</mat-icon>
+                    <span i18n [style.display]="displayMenuDescription">Insurance Companies</span>
+                </a>
+                <a mat-list-item *ngIf="authService.currentUser.roleId == userRole.Admin" (click)="redirectToFromMenu(['/admin/documents'])">
+                    <mat-icon>folder</mat-icon>
+                    <span i18n="@@documents" [style.display]="displayMenuDescription">Documents</span>
+                </a>
+                <a mat-list-item *ngIf="authService.currentUser.roleId == userRole.Admin" (click)="redirectToFromMenu(['/admin/users'])">
+                    <mat-icon>account_box</mat-icon>
+                    <span i18n="@@users" [style.display]="displayMenuDescription">Users</span>
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav #sidenav mode="over" position="end" [(opened)]="sidenavNotificationsOpened" (keydown.escape)="closeSidenavNotifications()" [class.full-layout-sidenav-notifications]="!isPhone"  [class.full-layout-sidenav-notifications-mobile]="isPhone">
+            <mat-list>
+                <div mat-subheader><span class="mat-title" i18n>Notifications</span></div>
+                <mat-divider></mat-divider>
+                <mat-list-item *ngFor="let n of notifications">
+                    <div mat-line>
+                        <span class="mat-caption title">
+                            {{jsonParse(n).title}}
+                        </span>
+                    </div>
+                    <div mat-line>
+                        <span class="mat-caption content" [innerHtml]="jsonParse(n).content"></span>
+                    </div>
+                    <div mat-line *ngIf="jsonParse(n)?.hasClaim && !jsonParse(n)?.hasDepositSlip">
+                        <span class="mat-caption content"><i>* Sin ficha depósito</i></span>
+                    </div>
+                    <div mat-line>
+                        <span class="mat-caption link">
+                            <!-- <a style="padding-right: 10px;" [routerLink]="" (click)="redirectTo(['/claim/', jsonParse(n)?.claimId])" *ngIf="jsonParse(n)?.hasClaim" i18n>Go to order</a>\ -->
+                            <a mat-stroked-button color="primary" (click)="redirectTo(['/claim/', jsonParse(n)?.claimId])" *ngIf="jsonParse(n)?.hasUrl" i18n>Go to order</a>
+                            <a mat-stroked-button color="primary" (click)="download(n)" *ngIf="jsonParse(n)?.hasUrl" i18n>Download</a>
+                        </span>
+                    </div>
+                    <div mat-line><mat-divider></mat-divider></div>
+                </mat-list-item>
+            </mat-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <!-- <mat-toolbar class="full-layout-footer"> -->
+    <app-footer></app-footer>
+    <!-- </mat-toolbar> -->
+    
+</ng-container>
+<app-size-detector></app-size-detector>

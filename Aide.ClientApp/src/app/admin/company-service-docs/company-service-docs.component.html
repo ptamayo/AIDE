@@ -1,0 +1,76 @@
+&nbsp;
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-md-6" style="border: 0px solid lightgray;">
+            <!-- Current docs begin -->
+            <div class="scrollable-container">
+                <table mat-table [dataSource]="currentClaimTypeProbatoryDocumentsDataSource" width="100%"
+                cdkDropList #table1 #list1="cdkDropList"
+                [cdkDropListData]="currentClaimTypeProbatoryDocumentsDataSource.data" [cdkDropListConnectedTo]="[list2]"
+                (cdkDropListDropped)="drop($event)" id="table1">
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef i18n>Current docs</th>
+                        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                    </ng-container>
+
+                    <!-- Group Column-->
+                    <ng-container matColumnDef="group">
+                        <th mat-header-cell *matHeaderCellDef i18n>Group</th>
+                        <td mat-cell *matCellDef="let element">
+                            <mat-form-field style="width: 110px; padding-left: 5px;">
+                                <mat-select [(value)]="element.groupId">
+                                  <mat-option [value]="1" i18n>Admin Docs</mat-option>
+                                  <mat-option [value]="2" i18n>Pictures</mat-option>
+                                  <mat-option [value]="3" i18n>Pict x Item</mat-option>
+                                  <mat-option [value]="4" i18n>TPA Docs</mat-option>
+                                  <mat-option [value]="5" i18n>Signature</mat-option>
+                                  <mat-option [value]="6" i18n>Post-signature</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns1; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns1;" cdkDrag></tr>
+                </table>
+            </div>
+            <!-- Current docs end -->
+		</div>
+        <div class="col-md-6" style="border: 0px solid lightgray;">
+            <!-- Remaining docs begin -->
+            <div class="scrollable-container">
+                <table mat-table [dataSource]="remainingClaimTypeProbatoryDocumentsDataSource" width="100%"
+                cdkDropList #table2 #list2="cdkDropList" [cdkDropListData]="remainingClaimTypeProbatoryDocumentsDataSource.data" 
+                [cdkDropListConnectedTo]="[list1]" (cdkDropListDropped)="drop($event)" id="table2">
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef i18n>Available docs</th>
+                        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns2;" cdkDrag></tr>
+                </table>
+            </div>
+            <!-- Remaining docs end -->
+		</div>
+	</div>
+</div>
+<!-- Claim type service settings - Begin -->
+<div class="main-table-container" style="padding-bottom:20px;">
+    <div [formGroup]="myForm" class="form-group-container">
+        <mat-slide-toggle [formControl]="isDepositSlipRequired" color="primary" i18n (change)="onDepositSlipRequiredChange($event)">The deposit slip is required upon service</mat-slide-toggle>
+        <mat-slide-toggle [formControl]="isClaimServiceEnabled" color="primary" i18n>The insurance company offers this service</mat-slide-toggle>
+    </div>
+</div>
+<!-- Claim type service settings - End -->
+<mat-action-row>
+    <button type="button" 
+        mat-raised-button color="primary" 
+        appPreventDoubleClick 
+        (throttledClick)="upsert()" 
+        [throttleTime]="700"
+        [disabled]="saveBtnIsDisabled"
+        i18n="@@saveButton">Save</button>
+</mat-action-row>

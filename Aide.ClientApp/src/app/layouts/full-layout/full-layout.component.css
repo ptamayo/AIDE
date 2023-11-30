@@ -1,0 +1,59 @@
+.full-layout-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.full-layout-container {
+    position: absolute;
+    top: 60px;
+    bottom: 0; /*need change when adding footer*/
+    left: 0;
+    right: 0;
+}
+
+.full-layout-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 55px; */
+}
+
+.full-layout-sidenav-notifications {
+    width: 350px;
+}
+
+.full-layout-sidenav-notifications-mobile {
+    width: 100%;
+}
+
+/* .full-layout-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+} */
+
+mat-nav-list a span {
+    padding-left: 15px;
+}
+
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.mat-line .mat-caption.title {
+    font-weight: bold;
+}
+
+.mat-line .mat-caption.content {
+    white-space: normal;
+}
+
+.mat-line .mat-caption.link a {
+    text-decoration: underline;
+}

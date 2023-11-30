@@ -1,0 +1,321 @@
+<div class="main-container">
+    <mat-toolbar *ngIf="!isLoadingPage">
+        <mat-toolbar-row>
+            <span *ngIf="action === 'Add'" i18n="@@addClaim">Add claim</span>
+            <span *ngIf="action === 'Edit'" i18n>Edit claim</span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <mat-form-field appearance="outline" style="font-size: 3.2mm; height: 3.2mm; width: 110px;">
+                    <mat-select [formControl]="orderStatus" (selectionChange)="onStatusChange($event)">
+                        <mat-option *ngFor="let status of claimStatusList" [value]="status.id">
+                            {{status.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="main-loading-shade" *ngIf="isLoadingPage">
+        <mat-spinner *ngIf="isLoadingPage"></mat-spinner>
+    </div>
+
+    <div class="main-table-container">
+
+        <div [formGroup]="myForm" class="form-group-container" *ngIf="!isLoadingPage">
+            <mat-form-field>
+                <mat-select placeholder="Workshop" 
+                    [formControl]="store" 
+                    [disableControl]="readonlyFormControl" 
+                    i18n-placeholder="@@workshop">
+                    <mat-option *ngFor="let store of stores" [value]="store.id">
+                        {{getNameOfStore(store)}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="store.invalid" i18n="@@mustChooseValue">You must choose a value</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Insurance Company" 
+                    [formControl]="insuranceCompany" 
+                    [disableControl]="readonlyFormControl" 
+                    (selectionChange)="onInsuranceCompanySelectionChange()" 
+                    i18n-placeholder="@@insuranceCompany">
+                    <mat-option *ngFor="let insuranceCompany of insuranceCompanies" [value]="insuranceCompany.id">
+                        {{insuranceCompany.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="insuranceCompany.invalid" i18n="@@mustChooseValue">You must choose a value</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Claim Type" 
+                    [formControl]="claimType" 
+                    [disableControl]="readonlyFormControl" 
+                    (selectionChange)="onClaimTypeSelectionChange()" 
+                    i18n-placeholder="@@claimType">
+                    <mat-option *ngFor="let claimType of getClaimTypes" [value]="claimType.id">
+                        {{claimType.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="claimType.invalid" i18n="@@mustChooseValue">You must choose a value</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Customer's Full Name" 
+                    [formControl]="customerFullName"
+                    [readonly]="readonlyFormControl" 
+                    autocomplete="off"
+                    i18n-placeholder="@@customerFullName">
+                <mat-error *ngIf="customerFullName.invalid">
+                    <div *ngIf="customerFullName.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="customerFullName.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- From group - begin -->
+            <div formGroupName="formGroup1" class="form-row">
+                <div class="col-sm-6 col-md-3">
+                    <mat-form-field class="form-field-full-width">
+                        <input matInput 
+                            placeholder="Policy Number" 
+                            [formControl]="policyNumber" 
+                            [readonly]="readonlyFormControl"
+                            autocomplete="off"
+                            i18n-placeholder="@@policyNumber">
+                        <mat-error *ngIf="policyNumber.invalid">
+                            <div *ngIf="policyNumber.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <mat-form-field class="form-field-full-width">
+                        <input matInput 
+                            placeholder="Policy Subsection" 
+                            [formControl]="policySubsection" 
+                            [readonly]="readonlyFormControl"
+                            autocomplete="off"
+                            i18n-placeholder="@@policySubsection">
+                        <mat-error *ngIf="policySubsection.invalid">
+                            <div *ngIf="policySubsection.errors.pattern" i18n>You must enter a valid number (minimum accepted is 0)</div>
+                            <div *ngIf="policySubsection.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <mat-form-field class="form-field-full-width">
+                        <input matInput 
+                            placeholder="Claim Number" 
+                            [formControl]="claimNumber" 
+                            [readonly]="readonlyFormControl"
+                            autocomplete="off"
+                            i18n-placeholder="@@claimNumber">
+                        <mat-error *ngIf="claimNumber.invalid">
+                            <div *ngIf="claimNumber.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <mat-form-field class="form-field-full-width">
+                        <input matInput 
+                            placeholder="Report Number" 
+                            [formControl]="reportNumber" 
+                            [readonly]="readonlyFormControl"
+                            autocomplete="off"
+                            i18n-placeholder="@@reportNumber">
+                        <mat-error *ngIf="reportNumber.invalid">
+                            <div *ngIf="reportNumber.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <mat-error *ngIf="isformGroup1Invalid" class="form-group-error-msg" style="padding-left: 5px;" i18n>You should provide <u>at least one</u> of these fields: Policy Number or Claim Number or Report Number</mat-error>
+            </div>
+            <!-- From group - end -->
+
+            <mat-form-field>
+                <input matInput 
+                    placeholder="AGRI Number" 
+                    [formControl]="externalOrderNumber"
+                    [readonly]="readonlyFormControl" 
+                    autocomplete="off"
+                    i18n-placeholder="@@externalOrderNumber">
+                <mat-error *ngIf="externalOrderNumber.invalid">
+                    <div *ngIf="externalOrderNumber.errors.pattern" i18n>The value does not match the expected pattern: it must be a valid AGRI or SAS+ order number</div>
+                    <div *ngIf="externalOrderNumber.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                    <div *ngIf="externalOrderNumber.errors.externalOrderNumberExist" i18n>The AGRI or SAS+ order number is already taken</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="isDepositSlipRequired">
+                <mat-select placeholder="Deposit Slip" 
+                    [formControl]="depositSlip" 
+                    [disableControl]="readonlyFormControl" 
+                    i18n-placeholder="@@depositSlip">
+                    <mat-option value="1" i18n>The insured customer DOES have a deposit slip.</mat-option>
+                    <mat-option value="0" i18n>The insured customer DOES NOT have a deposit slip.</mat-option>
+                </mat-select>
+                <mat-error *ngIf="depositSlip.invalid" i18n="@@mustChooseValue">You must choose a value</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Items Quantity" 
+                    [formControl]="itemsQuantity"
+                    [readonly]="readonlyFormControl"
+                    autocomplete="off"
+                    i18n-placeholder="@@itemsQuantity">
+                <mat-error *ngIf="itemsQuantity.invalid">
+                    <div *ngIf="itemsQuantity.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="itemsQuantity.errors.pattern" i18n>You must enter a valid number (minimum accepted is 1)</div>
+                    <div *ngIf="itemsQuantity.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Save changes on order - Begin -->
+        <mat-toolbar *ngIf="!isLoadingPage && (isSaveBtnVisible || isStoreAllowedToZipAndEmailClaimFiles)">
+            <mat-toolbar-row>
+                <span class="mat-toolbar-row-spacer"></span>
+                <span>
+                    <button type="button" mat-raised-button color="accent" style="margin-right: 10px;"
+                            appPreventDoubleClick 
+                            (throttledClick)="zipAndEmailClaimFiles()" 
+                            [throttleTime]="5000"
+                            [disabled]="!isReceiptCompleted"
+                            *ngIf="!isLoadingPage && isStoreAllowedToZipAndEmailClaimFiles" i18n>Download ZIP</button>
+                    
+                    <button type="button" mat-raised-button color="primary" 
+                        appPreventDoubleClick 
+                        (throttledClick)="upsert()" 
+                        [throttleTime]="700"
+                        [disabled]="saveBtnIsDisabled || !myForm.valid"
+                        *ngIf="isSaveBtnVisible" i18n="@@saveButton">Save</button>
+                </span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <!-- Save changes on order - End -->
+
+        <!-- Export documents - Begin-->
+        <app-export-documents title="Export documents" i18n-title 
+            [isPhoneDevice]="isPhoneDevice"
+            [exportZipDisabled]="!areTpaDocsCompleted || !areAdminDocsCompleted || !arePicturesCompleted || !arePicturesXItemCompleted || !isReceiptCompleted"
+            [exportZipVisible]="!isLoadingPage && isAllowedToEditOrder && claimId>0"
+            [exportPdfDisabled]="!areTpaDocsCompleted || !areAdminDocsCompleted || !arePicturesCompleted || !arePicturesXItemCompleted || !isReceiptCompleted"
+            [exportPdfVisible]="!isLoadingPage && isAllowedToEditOrder && claimId>0"
+            [claimId]="claimId"
+            [datasource]="getDocumentsByGroupId(2)"
+            (datasourceChange)="onExportDocumentChange($event)"
+            *ngIf="!isLoadingPage && claimId > 0 && showImageList && isAllowedToSeeDocs(1)">
+        </app-export-documents>
+        <!-- Export documents - Begin-->
+
+        <!-- Electronic Invoice - Begin-->
+        <!-- <app-claim-documents  title="Electronic Invoice" i18n-title 
+            [isPhoneDevice]="isPhoneDevice"
+            [isAllowedToEditOrder]="isAllowedToEditOrder"
+            [claimId]="claimId"
+            [datasource]="getDocumentsByGroupId(1)"
+            *ngIf="!isLoadingPage && claimId > 0 && showImageList && isAllowedToSeeDocs(2)">
+        </app-claim-documents> -->
+        <!-- Electronic Invoice - End-->
+
+        <!-- TPA Documents - Begin-->
+        <app-claim-probatory-documents 
+            title="TPA Documents" i18n-title
+            [isPhoneDevice]="isPhoneDevice"
+            [isAllowedToEditOrder]="isAllowedToEditOrder"
+            [isClaimCompleted]="!isSaveBtnVisible"
+            [datasource]="getProbatoryDocumentsByGroupId(4)"
+            (datasourceChange)="onProbatoryDocumentChange($event)"
+            (showImageListChange)="onShowImageListChange($event)"
+            *ngIf="!isLoadingPage && claimId > 0 && showImageList && isAllowedToSeeDocs(2) && hasTpaDocs">
+        </app-claim-probatory-documents>
+        <!-- TPA Documents - End-->
+
+        <!-- Administrative Documents - Begin-->
+        <app-claim-probatory-documents 
+            title="Administrative Documents" i18n-title
+            [isPhoneDevice]="isPhoneDevice"
+            [isAllowedToEditOrder]="isAllowedToEditOrder"
+            [isClaimCompleted]="!isSaveBtnVisible"
+            [datasource]="getProbatoryDocumentsByGroupId(1)"
+            (datasourceChange)="onProbatoryDocumentChange($event)"
+            (showImageListChange)="onShowImageListChange($event)"
+            *ngIf="!isLoadingPage && claimId > 0 && showImageList && isAllowedToSeeDocs(3)">
+        </app-claim-probatory-documents>
+        <!-- Administrative Documents - End-->
+
+        <!-- Pictures - Begin -->
+        <app-claim-probatory-documents 
+            title="Pictures" i18n-title
+            [isPhoneDevice]="isPhoneDevice"
+            [isAllowedToEditOrder]="isAllowedToEditOrder"
+            [isClaimCompleted]="!isSaveBtnVisible"
+            [datasource]="getProbatoryDocumentsByGroupId(2)"
+            (datasourceChange)="onProbatoryDocumentChange($event)"
+            (showImageListChange)="onShowImageListChange($event)"
+            *ngIf="!isLoadingPage && claimId > 0 && showImageList && getProbatoryDocumentsByGroupId(2).length > 0 && isAllowedToSeeDocs(4)">
+        </app-claim-probatory-documents>
+        <!-- Pictures - End -->
+
+        <!-- Pictures x Item - Begin -->
+        <div *ngFor="let item of getItemsQuantity(); let i = index;">
+        <app-claim-probatory-documents 
+            title="Cristal {{i+1}}"
+            [isPhoneDevice]="isPhoneDevice"
+            [isAllowedToEditOrder]="isAllowedToEditOrder"
+            [isClaimCompleted]="!isSaveBtnVisible"
+            [datasource]="getProbatoryDocumentsByGroupIdAndClaimItemId(3, i+1)"
+            (datasourceChange)="onProbatoryDocumentChange($event)"
+            (showImageListChange)="onShowImageListChange($event)"
+            *ngIf="!isLoadingPage && claimId > 0 && showImageList && getProbatoryDocumentsByGroupIdAndClaimItemId(3, i+1).length > 0 && isAllowedToSeeDocs(4)">
+        </app-claim-probatory-documents>
+        </div>
+        <!-- Pictures x Item - End -->
+
+        <!-- NEW Receipt Signed - Begin -->
+        <app-claim-probatory-documents 
+            title="Receipt" i18n-title
+            [isPhoneDevice]="isPhoneDevice"
+            [isAllowedToEditOrder]="isAllowedToEditOrder"
+            [isClaimCompleted]="!isSaveBtnVisible"
+            [datasource]="getProbatoryDocumentsByGroupId(5)"
+            (datasourceChange)="onProbatoryDocumentChange($event)"
+            (showImageListChange)="onShowImageListChange($event)"
+            [actionButtonDisabled]="!isExternalOrderNumberProvided || !areAllStoreDocumentsCompleted"
+            [actionButton]="'signature'"
+            [claimId]="claimId"
+            *ngIf="!isLoadingPage && claimId > 0 && showImageList && getProbatoryDocumentsByGroupId(5).length > 0 && isAllowedToSeeDocs(5)">
+        </app-claim-probatory-documents>
+        <div style="margin-left: 22px; font-size: medium; color: red;" *ngIf="!isExternalOrderNumberProvided && !isLoadingPage && claimId > 0">
+            <span i18n>You need to provide the External order number in order to enable the receipt signature</span>
+        </div>
+        <div style="margin-left: 22px; font-size: medium; color: red;" *ngIf="!areAllStoreDocumentsCompleted && !isLoadingPage && claimId > 0 && showImageList && getProbatoryDocumentsByGroupId(5).length > 0 && isAllowedToSeeDocs(5)">
+            <span i18n>You need to upload all the required documents in order to enable the receipt signature</span>
+        </div>
+        <!-- NEW Receipt Signed - End -->
+
+        <!-- Post-signature Documents - Begin-->
+        <app-claim-probatory-documents 
+        title="Post-signature Documents" i18n-title
+        description="Documentos posteriores a la entrega del auto y firma del asegurado: Al terminar de cargar estos documentos, la sucursal debe cambiar al estatus de completado de manera manual aquí en SISTEMA AIDE para continuar con el proceso."
+        [isPhoneDevice]="isPhoneDevice"
+        [isAllowedToEditOrder]="isAllowedToEditOrder"
+        [isClaimCompleted]="!isSaveBtnVisible"
+        [datasource]="getProbatoryDocumentsByGroupId(6)"
+        (datasourceChange)="onProbatoryDocumentChange($event)"
+        (showImageListChange)="onShowImageListChange($event)"
+        *ngIf="!isLoadingPage && claimId > 0 && showImageList && getProbatoryDocumentsByGroupId(6).length > 0 && isAllowedToSeeDocs(3)">
+        </app-claim-probatory-documents>
+        <!-- Post-signature Documents - End-->
+
+        <!-- Gallery - Begin -->
+        <app-gallery *ngIf="!isLoadingPage && claimId > 0 && !showImageList"
+            [claimId]="claimId"
+            [galleryImages]="galleryImages"
+            [showImageList]="showImageList"
+            (showImageListChange)="onShowImageListChange($event)"></app-gallery>
+        <!-- Gallery - End -->
+    </div>
+</div>

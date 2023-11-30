@@ -1,0 +1,66 @@
+<div class="main-container">
+    <mat-toolbar *ngIf="!isLoadingPage">
+        <mat-toolbar-row>
+            <span *ngIf="action === 'Add'" i18n>Add store</span>
+            <span *ngIf="action === 'Edit'" i18n>Edit store</span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <button type="button" 
+                    mat-raised-button color="primary" 
+                    (click)="upsert()"
+                    [disabled]="saveBtnIsDisabled || !myForm.valid"
+                    i18n="@@saveButton">Save</button>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="main-loading-shade" *ngIf="isLoadingPage">
+        <mat-spinner *ngIf="isLoadingPage"></mat-spinner>
+    </div>
+
+    <div class="main-table-container">
+        <div [formGroup]="myForm" class="form-group-container" *ngIf="!isLoadingPage">
+            <mat-form-field>
+                <input matInput 
+                    placeholder="SAP Number" 
+                    [formControl]="storeSAPNumber"
+                    [readonly]="readonlyFormControl" 
+                    autocomplete="off"
+                    i18n-placeholder="@@storeSAPNumber">
+                <mat-error *ngIf="storeSAPNumber.invalid">
+                    <div *ngIf="storeSAPNumber.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="storeSAPNumber.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Store's Name" 
+                    [formControl]="storeName"
+                    [readonly]="readonlyFormControl" 
+                    autocomplete="off"
+                    i18n-placeholder="@@storeName">
+                <mat-error *ngIf="storeName.invalid">
+                    <div *ngIf="storeName.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="storeName.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Email address"
+                    i18n-placeholder="@@emailAddress"
+                    [formControl]="storeEmail"
+                    [readonly]="readonlyFormControl" 
+                    autocomplete="off">
+                <mat-error *ngIf="storeEmail.invalid">
+                    <div *ngIf="storeEmail.errors.required || storeEmail.errors.email" i18n="@@mustEnterEmail">You must enter a valid email</div>
+                    <div *ngIf="storeEmail.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- List of users -->
+    <app-company-users [eventStream]="eventStream$" *ngIf="storeId"></app-company-users>
+</div>

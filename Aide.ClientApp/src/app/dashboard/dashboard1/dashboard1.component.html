@@ -1,0 +1,237 @@
+<!-- <button (click)="sendMessage()">DASHBOARD-1</button> -->
+<div class="main-container">
+  <mat-toolbar>
+    <mat-toolbar-row>
+        <span i18n="@@listOfClaims">List of claims</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+    <div class="main-loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+
+    <!-- Search input fields - begin -->
+    <div>
+      <div class="row no-gutters">
+        <!-- Search claim(s) by keayword(s) - begin -->
+        <div class="col">
+          <mat-form-field class="input-search">
+            <mat-label i18n>Search by keyword</mat-label>
+            <mat-icon style="margin-right: 5px;" matPrefix>search</mat-icon>
+            <input matInput type="text" autocomplete="off" [(ngModel)]="inputKeywordValue" (keyup)="onKeySearch($event)">
+            <button mat-button *ngIf="inputKeywordValue" matSuffix mat-icon-button aria-label="Clear" (click)="onKeySearchCleaned($event)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <!-- Search claim(s) by keayword(s) - end -->
+
+        <!-- Order status filter - Begin -->
+        <div class="col-sm-2 col-xs-12">
+          <mat-form-field class="form-field-full-width" style="padding-left: 10px; padding-right: 10px;">
+            <mat-label i18n>Order status</mat-label>
+            <mat-select [(ngModel)]="inputClaimStatusValue" (selectionChange)="onClaimStatusChange()">
+              <mat-option [value]="0" i18n>All</mat-option>
+              <mat-option *ngFor="let status of claimStatusList" [value]="status.id">
+                {{status.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- Order status filter - End -->
+      </div>
+
+      <div class="row no-gutters" *ngIf="isFilterAllowed">
+        <!-- Claim type filter - Begin -->
+        <div class="col-6 col-md-4">
+          <mat-form-field class="form-field-full-width" style="padding-left: 10px; padding-right: 10px;">
+            <mat-label i18n>Service Type</mat-label>
+            <mat-select [(ngModel)]="inputServiceTypeValue" (selectionChange)="onServiceTypeChange()">
+              <mat-option [value]="0" i18n>All</mat-option>
+              <mat-option *ngFor="let serviceType of claimTypes" [value]="serviceType.id">
+                {{serviceType.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- Claim type filter - End -->
+        
+        <!-- Insurance company filter - Begin -->
+        <div class="col-6 col-md-4">
+          <mat-form-field class="form-field-full-width" style="padding-left: 10px; padding-right: 10px;">
+            <mat-label i18n>Insurance Company</mat-label>
+            <mat-select [(ngModel)]="inputInsuranceCompanyValue" (selectionChange)="onInsuranceCompanyChange()">
+              <mat-option [value]="0" i18n>All</mat-option>
+              <mat-option *ngFor="let insuranceCompany of insuranceCompanies" [value]="insuranceCompany.id">
+                {{insuranceCompany.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- Insurance company filter - End -->
+
+        <!-- Date start and end filters - Begin -->
+        <div class="col-6 col-md-2">
+          <mat-form-field class="form-field-full-width" style="padding-left: 10px; padding-right: 10px;">
+            <mat-label i18n>Start date</mat-label>
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="inputStartDateValue" (dateChange)="onDateChange()">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-6 col-md-2">
+          <mat-form-field class="form-field-full-width" style="padding-left: 10px; padding-right: 10px;">
+            <mat-label i18n>End date</mat-label>
+            <input matInput [matDatepicker]="picker2" [(ngModel)]="inputEndDateValue" (dateChange)="onDateChange()">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <!-- Date start and end filters - End -->
+      </div>
+
+      <div class="row no-gutters" *ngIf="isFilterAllowed">
+        <!-- Store's name filter - Begin -->
+        <div class="col-10">
+          <mat-form-field class="form-field-full-width" style="padding-left: 10px; padding-right: 10px;">
+            <mat-label i18n>Store's Name</mat-label>
+            <input type="text"
+                    placeholder="Enter a keyword"
+                    i18n-placeholder
+                    matInput
+                    [formControl]="inputStoreFilter"
+                    [matAutocomplete]="auto"><!--#autoCompleteInput-->
+            <button mat-button *ngIf="inputStoreFilter.value" matSuffix mat-icon-button aria-label="Clear" (click)="onStoreFilterCleaned()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-autocomplete #auto="matAutocomplete" (closed)="onStoreFilterChange()">
+              <mat-option *ngFor="let option of storesFilteredOptions | async" [value]="option.sapNumber+'-'+option.name">
+                {{option.sapNumber}}-{{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <!-- Store's name filter - End -->
+
+        <!-- Insurance company filter - Begin -->
+        <div class="col-2">
+          <button type="button"
+            mat-raised-button color="primary" 
+            style="padding-left: 10px; padding-right: 10px;"
+            appPreventDoubleClick 
+            (throttledClick)="exportCsv()"
+            [throttleTime]="10000"
+            i18n>Export</button>
+        </div>
+        <!-- Insurance company filter - End -->
+      </div>
+    </div>
+    <!-- Search input fields - end -->
+
+    <!-- Data table - begin-->
+    <div class="main-table-container">
+      <table mat-table [dataSource]="data" class="main-table"
+             matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+        
+        <!-- Default/standard table - begin -->
+        <ng-container matColumnDef="dateCreated">
+          <th mat-header-cell *matHeaderCellDef i18n="@@dateCreatedTableColumn">Date Created</th>
+          <td mat-cell *matCellDef="let row" [style]="getBackgroundColorStyle(row)">
+            {{row.dateCreated | utctolocal | date:'shortDate'}}
+            {{row.dateCreated | utctolocal | date:'h:mm a'}}
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="claimType.name">
+          <th mat-header-cell *matHeaderCellDef i18n="@@claimType">Claim Type</th>
+          <td mat-cell *matCellDef="let row" [style]="getBackgroundColorStyle(row)">{{row.claimType.name}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="insuranceCompany.name">
+          <th mat-header-cell *matHeaderCellDef i18n="@@insuranceCompany">Insurance Company</th>
+          <td mat-cell *matCellDef="let row" [style]="getBackgroundColorStyle(row)">{{row.insuranceCompany.name}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="claimNumber">
+          <th mat-header-cell *matHeaderCellDef i18n="@@claimNumber">Claim Number</th>
+          <td mat-cell *matCellDef="let row" [style]="getBackgroundColorStyle(row)">{{row.claimNumber}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="externalOrderNumber">
+          <th mat-header-cell *matHeaderCellDef i18n="@@externalOrderNumber">AGRI Number</th>
+          <td mat-cell *matCellDef="let row" [style]="getBackgroundColorStyle(row)">{{row.externalOrderNumber}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdByUser.firstName">
+          <th mat-header-cell *matHeaderCellDef i18n="@@claimCreatedByUser">Created By</th>
+          <td mat-cell *matCellDef="let row" [style]="getBackgroundColorStyle(row)">{{row.createdByUser.firstName}} {{row.createdByUser.lastName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="claimStatusId">
+          <th mat-header-cell *matHeaderCellDef i18n>Status</th>
+          <td mat-cell *matCellDef="let row" [style]="getBackgroundColorStyle(row)">{{Status(row.claimStatusId)}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef i18n="@@actionsTableColumn">Actions</th>
+          <td mat-cell *matCellDef="let row" [style]="getBackgroundColorStyle(row)">
+               <button mat-stroked-button color="primary" [routerLink]="['/claim/', row.id]" i18n="@@editButton">Edit</button>
+          </td>
+        </ng-container>
+        <!-- Default/standard table - end -->
+
+        <!-- Mobile only - begin -->
+        <ng-container matColumnDef="mobile">
+          <th mat-header-cell *matHeaderCellDef i18n>Claims</th>
+          <td mat-cell *matCellDef="let row" style="border: 0px; padding: 5px;">
+               <mat-card>
+                 <mat-card-content>
+                   <table width="100%">
+                     <tr>
+                       <td class="mat-card-table-column" i18n="@@dateCreatedTableColumn">Date Created</td>
+                       <td>
+                        {{row.dateCreated | utctolocal | date:'shortDate'}}
+                        {{row.dateCreated | utctolocal | date:'h:mm a'}}
+                       </td>
+                     </tr>
+                     <tr>
+                      <td class="mat-card-table-column" i18n="@@claimType">Claim Type</td>
+                      <td>{{row.claimType.name}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mat-card-table-column" i18n="@@insuranceCompany">Insurance Company</td>
+                      <td>{{row.insuranceCompany.name}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mat-card-table-column" i18n="@@claimNumber">Claim Number</td>
+                      <td>{{row.claimNumber}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mat-card-table-column" i18n="@@externalOrderNumber">AGRI Number</td>
+                      <td>{{row.externalOrderNumber}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mat-card-table-column" i18n>Status</td>
+                      <td>{{Status(row.claimStatusId)}}</td>
+                    </tr>
+                   </table>
+                 </mat-card-content>
+                 <mat-card-actions>
+                   <div class="center-div-btn">
+                    <button mat-stroked-button color="primary" [routerLink]="['/claim/', row.id]" i18n="@@editButton">Edit</button>
+                   </div>
+                 </mat-card-actions>
+               </mat-card>
+          </td>
+        </ng-container>
+        <!-- Mobile only - end -->
+
+        <tr mat-header-row *matHeaderRowDef="getDisplayedColumns()"></tr>
+        <tr mat-row *matRowDef="let row; columns: getDisplayedColumns();"></tr>
+      </table>
+    </div>
+  
+    <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
+    <!-- Data table - end-->
+</div>
+  
