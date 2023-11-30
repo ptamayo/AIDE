@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+  aide-api-admin:
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/aide.admin.dockerfile
+    env_file:
+      - ./dockerfiles/.dockerdev-env
+    ports:
+      - '5004:80'
+    volumes:
+      - /app/docs:/app/docs
+  aide-api-claims:
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/aide.claims.dockerfile
+    env_file:
+      - ./dockerfiles/.dockerdev-env
+    ports:
+      - '5001:80'
+    volumes:
+      - /app/docs:/app/docs
+  aide-api-hub:
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/aide.notifications.dockerfile
+    env_file:
+      - ./dockerfiles/.dockerdev-env
+    ports:
+      - '5003:80'
+    volumes:
+      - /app/docs:/app/docs
+  aide-api-gateway:
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/aide.api-gateway.dockerfile
+    env_file:
+      - ./dockerfiles/.dockerdev-env
+    ports:
+      - '5000:80'
+    volumes:
+      - /app/docs:/app/docs
+    depends_on:
+      - aide-api-admin
+      - aide-api-claims
+      - aide-api-hub
+  aide-jobs:
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/aide.hangfire-worker.dockerfile
+    env_file:
+      - ./dockerfiles/.dockerdev-env
+    ports:
+      - '5002:80'
+    volumes:
+      - /app/docs:/app/docs
+      - /app/docs/aide-jobs:/root/.aspnet
+    depends_on:
+      - aide-api-gateway
+  

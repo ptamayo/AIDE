@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aide-api-admin-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aide-api-admin
+  template:
+    metadata:
+      labels:
+        app: aide-api-admin
+    spec:
+      imagePullSecrets:
+        - name: my-registry-key
+      containers:
+        - name: aide-api-admin-node
+          image: aideguru/aide-api-admin:latest
+          imagePullPolicy: Always
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: K8sDev
+            - name: AIDE_DEV_NAME
+              value: Primo
+            - name: TZ
+              value: America/Los_Angeles
