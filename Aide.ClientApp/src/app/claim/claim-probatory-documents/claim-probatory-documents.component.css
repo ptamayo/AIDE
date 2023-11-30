@@ -1,0 +1,35 @@
+/* Table of probatory documents */
+table {
+  width: 100%;
+}
+
+.mat-column-sortPriority {
+  max-width: 50px;
+}
+
+.mat-column-actions {
+  max-width: 130px;
+}
+
+@media screen and (max-width: 768px) {
+  mat-cell:first-of-type,
+  mat-header-cell:first-of-type,
+  mat-footer-cell:first-of-type {
+    padding-left: 12px;
+    justify-content: space-between;
+  }
+  .mat-column-actions {
+    max-width: 75px;
+  }
+  .view-section {
+    max-width: 90px;
+    text-align: right;
+    padding-right: 10px;
+  }
+  .document_name {
+    min-width: 120px;
+  }
+  .signature_btn {
+    padding: 1px;
+  }
+}

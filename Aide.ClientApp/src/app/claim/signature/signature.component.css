@@ -1,0 +1,21 @@
+.center-div-signature
+{
+     margin: 0 auto;
+     width: 600px;
+     text-align: center;
+     border: 2px dashed #888;
+}
+
+.center-div-signature-xs
+{
+     width: 100%;
+     text-align: center;
+     border: 2px dashed #888;
+}
+
+.center-div
+{
+     width: 100%;
+     text-align: center;
+     padding: 10px;
+}

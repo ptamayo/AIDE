@@ -1,0 +1,19 @@
+<mat-accordion class="accordion-headers-align" multi>
+    <mat-expansion-panel *ngFor="let claimType of _claimTypes">
+        <mat-expansion-panel-header style="background: #F5F5F5;">
+            <mat-panel-title>
+                {{claimType.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                <span i18n>Probatory documents</span>
+                <mat-icon>settings</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-company-service-docs 
+            [companyId]="_companyId" 
+            [claimTypeId]="claimType.id" 
+            [companyClaimTypeSettings]="getCompanyClaimTypeSettings(claimType.id)"
+            [insuranceProbatoryDocuments]="insuranceProbatoryDocuments" 
+            [allProbatoryDocuments]="allProbatoryDocuments"></app-company-service-docs>
+    </mat-expansion-panel>
+</mat-accordion>

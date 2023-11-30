@@ -1,0 +1,70 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>{{_title}}</span>
+        <span class="mat-toolbar-row-spacer"></span>
+        <span>
+            <button type="button" mat-raised-button color="accent"
+                appPreventDoubleClick 
+                (throttledClick)="zipClaimFiles()" 
+                [throttleTime]="5000"
+                [disabled]="_btnExportZipDisabled"
+                *ngIf="_btnExportZipVisible">
+                <span i18n *ngIf="!_isPhoneDevice">Export ZIP</span>
+                <span *ngIf="_isPhoneDevice">ZIP</span>
+            </button>
+            &nbsp;
+            <button type="button" mat-raised-button color="accent"
+                appPreventDoubleClick 
+                (throttledClick)="pdfExportClaimFiles()" 
+                [throttleTime]="5000"
+                [disabled]="_btnExportPdfDisabled"
+                *ngIf="_btnExportPdfVisible">
+                <span i18n *ngIf="!_isPhoneDevice">Export PDF</span>
+                <span *ngIf="_isPhoneDevice">PDF</span>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="main-table-container">
+    <mat-table [dataSource]="_claimDocuments" class="main-table">
+
+        <!-- Sort Priority Column -->
+        <ng-container matColumnDef="sortPriority">
+            <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.sortPriority}}</mat-cell>
+        </ng-container>
+
+        <!-- DocumentTypeName Column -->
+        <ng-container matColumnDef="documentType.name">
+            <mat-header-cell *matHeaderCellDef i18n>Document</mat-header-cell>
+            <mat-cell *matCellDef="let row; let i=index;">
+                <mat-chip-list style="padding-right: 10px;" *ngIf="row.statusId == 40">
+                    <mat-chip color="secondary" selected>
+                        <mat-icon>done</mat-icon>
+                        <span i18n *ngIf="!isPhoneDevice">Completed</span>
+                    </mat-chip>
+                </mat-chip-list>
+                {{row.documentType.name}}
+                &nbsp;
+                <span style="padding-right: 5px;" *ngIf="row.statusId == 40">
+                    <a mat-stroked-button color="primary" (click)="download(row.document.id, row.documentType.name, i)" [disabled]="isDownloading[i]" i18n>View</a>
+                </span>
+                &nbsp;&nbsp;
+                <mat-chip-list *ngIf="row.statusId == 20">
+                    <mat-chip color="accent" selected i18n>In Process</mat-chip>
+                </mat-chip-list>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef i18n>Action</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                &nbsp;
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="getDocumentsTableDisplayedColumns()" style="display: none"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: getDocumentsTableDisplayedColumns();"></mat-row>
+    </mat-table>
+</div>

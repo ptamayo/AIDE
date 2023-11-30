@@ -1,0 +1,12 @@
+.checklist-viewport {
+    height: 200px;
+    width: 100%;
+    border: 1px solid black;
+}
+  
+.checklist-item {
+    padding-left: 4px;
+}
+
+/* .checklist-item-detail {
+} */

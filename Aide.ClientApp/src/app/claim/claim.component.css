@@ -1,0 +1,50 @@
+/* Grouped fields for a claim*/
+  .form-field-full-width {
+    width: 100%;
+  }
+
+  .form-group-error-msg {
+    /* margin-top: -18px; */
+    font-size: 3.2mm;
+  }
+
+/* Table of probatory documents */
+  table {
+    width: 100%;
+  }
+
+  .mat-column-sortPriority {
+    max-width: 50px;
+  }
+
+  .mat-column-actions {
+    max-width: 130px;
+  }
+
+  /* Image Gallery - Begin */
+
+  ngx-gallery /deep/ ngx-gallery-image .ngx-gallery-arrow { 
+    color: black; 
+    background-color: goldenrod; 
+    border-radius: 50%; 
+    font-size: 25px; 
+    width: 25px; 
+    height: 25px; 
+    line-height: 25px; 
+    text-align: center; 
+    vertical-align: middle; 
+  }
+  
+  ngx-gallery /deep/ ngx-gallery-preview .ngx-gallery-arrow { 
+    color: black; 
+    background-color: goldenrod; 
+    border-radius: 50%; 
+    font-size: 50px; 
+    width: 50px; 
+    height: 50px; 
+    line-height: 50px; 
+    text-align: center; 
+    vertical-align: middle; 
+  }
+  
+  /* Image Gallery - End */

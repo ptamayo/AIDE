@@ -1,0 +1,59 @@
+<div class="main-container">
+    <mat-toolbar *ngIf="!isLoadingPage">
+        <mat-toolbar-row>
+            <span *ngIf="action === 'Add'" i18n>Add document</span>
+            <span *ngIf="action === 'Edit'" i18n>Edit document</span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <button type="button" 
+                    mat-raised-button color="primary" 
+                    (click)="upsert()"
+                    [disabled]="saveBtnIsDisabled || !myForm.valid"
+                    i18n="@@saveButton">Save</button>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="main-loading-shade" *ngIf="isLoadingPage">
+        <mat-spinner *ngIf="isLoadingPage"></mat-spinner>
+    </div>
+
+    <div class="main-table-container">
+        <div [formGroup]="myForm" class="form-group-container" *ngIf="!isLoadingPage">
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Document's Name" 
+                    [formControl]="docName"
+                    [readonly]="readonlyFormControl" 
+                    autocomplete="off"
+                    i18n-placeholder="@@documentName">
+                <mat-error *ngIf="docName.invalid">
+                    <div *ngIf="docName.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="docName.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select [formControl]="docOrientation" placeholder="Orientation" i18n-placeholder>
+                    <mat-option [value]="0">NA</mat-option>
+                    <mat-option [value]="1" i18n>Portrait</mat-option>
+                    <mat-option [value]="2" i18n>Landscape</mat-option>
+                </mat-select>
+                <mat-error *ngIf="docOrientation.invalid" i18n="@@mustChooseValue">You must choose a value</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Accepted File Extensions" 
+                    [formControl]="docFileExtensions"
+                    [readonly]="readonlyFormControl" 
+                    autocomplete="off"
+                    i18n-placeholder>
+                <mat-error *ngIf="docFileExtensions.invalid">
+                    <div *ngIf="docFileExtensions.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="docFileExtensions.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

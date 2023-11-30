@@ -57,4 +57,11 @@ services:
       - /app/docs/aide-jobs:/root/.aspnet
     depends_on:
       - aide-api-gateway
-  
+  aide-client-app:
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/aide.client-app.dockerfile
+    ports:
+      - '4200:80'
+    depends_on:
+      - aide-api-gateway

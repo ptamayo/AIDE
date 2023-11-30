@@ -1,0 +1,108 @@
+<div class="main-container">
+    <mat-toolbar *ngIf="!isLoadingPage">
+        <mat-toolbar-row>
+            <span i18n="@@userProfile">My profile</span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <button
+                    type="button" 
+                    mat-raised-button color="primary" 
+                    (click)="upsert()" 
+                    [disabled]="saveBtnIsDisabled || myForm.invalid"
+                    i18n="@@saveButton">Save</button>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="main-loading-shade" *ngIf="isLoadingPage">
+        <mat-spinner *ngIf="isLoadingPage"></mat-spinner>
+    </div>
+
+    <div class="main-table-container">
+        <div [formGroup]="myForm" class="form-group-container" *ngIf="!isLoadingPage">
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Email address"
+                    i18n-placeholder="@@emailAddress"
+                    [formControl]="email"
+                    [readonly]="true" 
+                    autocomplete="off">
+                <mat-error *ngIf="email.invalid">
+                    <div *ngIf="email.errors.required || email.errors.email" i18n="@@mustEnterEmail">You must enter a valid email</div>
+                    <div *ngIf="email.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                    placeholder="First Name" 
+                    [formControl]="firstName"
+                    autocomplete="off"
+                    i18n-placeholder="@@firstName">
+                <mat-error *ngIf="firstName.invalid">
+                    <div *ngIf="firstName.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="firstName.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Last Name" 
+                    [formControl]="lastName" 
+                    autocomplete="off"
+                    i18n-placeholder="@@lastName">
+                <mat-error *ngIf="lastName.invalid">
+                    <div *ngIf="lastName.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="lastName.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-toolbar *ngIf="!isLoadingPage">
+        <mat-toolbar-row>
+            <span i18n="@@password">Password</span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <button
+                    type="button" 
+                    mat-raised-button color="primary" 
+                    (click)="upsert2()" 
+                    [disabled]="saveBtnIsDisabled || myForm2.invalid"
+                    i18n="@@saveButton">Save</button>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="main-table-container">
+        <div [formGroup]="myForm2" class="form-group-container" *ngIf="!isLoadingPage">
+            <mat-form-field>
+                <input matInput 
+                    type="password"
+                    placeholder="New password"
+                    [formControl]="psw1"
+                    autocomplete="new-password"
+                    i18n-placeholder>
+                <mat-error *ngIf="f.psw1.invalid">
+                    <div *ngIf="f.psw1.errors.required" i18n>Type the new password</div>
+                    <div *ngIf="f.psw1.errors.minlength" i18n>The new password must be at least 6 characters long</div>
+                    <div *ngIf="f.psw1.errors.maxlength" i18n>The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                    type="password"
+                    placeholder="New password again" 
+                    [formControl]="psw2"
+                    autocomplete="new-password"
+                    i18n-placeholder>
+                <mat-error *ngIf="f.psw2.invalid">
+                    <div *ngIf="f.psw2.errors.required" i18n>Re-type the new password</div>
+                    <div *ngIf="f.psw2.errors.mustMatch" i18n>Passwords must match</div>
+                    <div *ngIf="f.psw2.errors.maxlength" i18n>The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

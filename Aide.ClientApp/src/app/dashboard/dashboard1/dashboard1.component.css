@@ -1,0 +1,35 @@
+  /* Structure */  
+  table {
+    width: 100%;
+  }
+
+  /* Column Widths - Currently not being used (classes need a change of name and add to the html tags */
+  .mat-column-number,
+  .mat-column-state {
+    max-width: 64px;
+  }
+  
+  .mat-column-created {
+    max-width: 124px;
+  }
+  
+  .mat-card-table-column {
+    font-weight: bold;
+    width: 175px;
+  }
+
+  .center-div-btn
+  {
+      width: 100%;
+      text-align: center;
+  }
+  
+  /* Grouped fields for a claim*/
+  .form-field-full-width {
+    width: 100%;
+  }
+
+  .form-group-error-msg {
+    /* margin-top: -18px; */
+    font-size: 3.2mm;
+  }

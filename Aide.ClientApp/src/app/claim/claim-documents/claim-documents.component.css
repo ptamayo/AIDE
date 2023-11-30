@@ -1,0 +1,12 @@
+/* Table of documents */
+table {
+    width: 100%;
+  }
+
+  .mat-column-sortPriority {
+    max-width: 50px;
+  }
+
+  .mat-column-actions {
+    max-width: 130px;
+  }

@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Table with shades in the main container (body) */
+  .main-container {
+    position: relative;
+    height: 100%;
+  }
+  
+  .main-table-container {
+    position: relative;
+    overflow: auto;
+  }
+  
+  .main-table {
+    width: 100%;
+  }
+
+  .main-loading-shade {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-rate-limit-reached {
+    color: #980000;
+    max-width: 360px;
+    text-align: center;
+  }
+
+/* Form */
+.form-group-container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  padding-bottom: 0px;
+}
+
+.form-group-container > * {
+  width: 100%;
+}
+
+/* */
+
+.mat-toolbar-row-spacer {
+  flex: 1 1 auto;
+}
+
+/* Search page */
+
+.input-search {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}

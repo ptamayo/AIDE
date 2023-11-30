@@ -3,6 +3,7 @@
 # compiled output
 bin/
 obj/
+dist/
 
 # IDE - VS
 .vs/

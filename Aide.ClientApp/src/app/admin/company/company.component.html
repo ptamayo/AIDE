@@ -1,0 +1,76 @@
+<div class="main-container">
+    <mat-toolbar *ngIf="!isLoadingPage">
+        <mat-toolbar-row>
+            <span *ngIf="action === 'Add'" i18n>Add insurance company</span>
+            <span *ngIf="action === 'Edit'" i18n>Edit insurance company</span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <button type="button" 
+                    mat-raised-button color="primary" 
+                    (click)="upsert()"
+                    [disabled]="saveBtnIsDisabled || !myForm.valid"
+                    i18n="@@saveButton">Save</button>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="main-loading-shade" *ngIf="isLoadingPage">
+        <mat-spinner *ngIf="isLoadingPage"></mat-spinner>
+    </div>
+
+    <div class="main-table-container" style="padding-bottom:20px;">
+        <div [formGroup]="myForm" class="form-group-container" *ngIf="!isLoadingPage">
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Name" 
+                    [formControl]="insuranceCompanyName"
+                    [readonly]="readonlyFormControl" 
+                    autocomplete="off"
+                    i18n-placeholder>
+                <mat-error *ngIf="insuranceCompanyName.invalid">
+                    <div *ngIf="insuranceCompanyName.errors.required" i18n="@@mustEnterValue">You must enter a value</div>
+                    <div *ngIf="insuranceCompanyName.errors.maxlength" i18n="@charLimitReached">The value exceeds the limit</div>
+                </mat-error>
+            </mat-form-field>
+            <mat-slide-toggle [formControl]="insuranceCompanyEnabled" color="primary" i18n>Enabled</mat-slide-toggle>
+        </div>
+    </div>
+
+    <mat-tab-group>
+        <!-- List of users -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">account_circle</mat-icon>
+                <span i18n>Users</span>
+              </ng-template>
+              <app-company-users [eventStream]="eventStream$" *ngIf="insuranceCompanyId"></app-company-users>
+        </mat-tab>
+
+        <!-- Services -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">check_circle</mat-icon>
+                <span i18n>Services</span>
+              </ng-template>
+              <app-company-services [companyId]="insuranceCompanyId" [claimTypeSettings]="insuranceCompany?.claimTypeSettings" [claimTypes]="claimTypes" *ngIf="insuranceCompanyId"></app-company-services>
+        </mat-tab>
+
+        <!-- Collages -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">photo_library</mat-icon>
+                <span i18n>Collages</span>
+              </ng-template>
+              <app-company-collages [companyId]="insuranceCompanyId" *ngIf="insuranceCompanyId"></app-company-collages>
+        </mat-tab>
+
+        <!-- Export -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">cloud_download</mat-icon>
+                <span i18n>Export</span>
+              </ng-template>
+              <app-company-export [companyId]="insuranceCompanyId" [claimTypeSettings]="insuranceCompany?.claimTypeSettings" [claimTypes]="claimTypes" *ngIf="insuranceCompanyId"></app-company-export>
+        </mat-tab>
+    </mat-tab-group>
+</div>

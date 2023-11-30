@@ -1,0 +1,26 @@
+<form class="form-signin" #f="ngForm" (ngSubmit)="signIn(f.value)">
+    <h2 class="form-signin-heading"><img [src]="urlLogo()"></h2>
+    <label for="inputEmail" class="sr-only" i18n="@@emailAddress">Email address</label>
+    <input 
+        type="email" 
+        id="inputEmail" 
+        name="email" ngModel 
+        class="form-control" 
+        [disabled]="loading" 
+        placeholder="Email address" 
+        autocomplete="off" required autofocus 
+        i18n-placeholder="@@emailAddress">
+    <label for="inputPassword" class="sr-only" i18n="@@password">Password</label>
+    <input 
+        type="password" 
+        id="inputPassword" 
+        name="password" ngModel 
+        class="form-control" 
+        [disabled]="loading" 
+        placeholder="Password" 
+        required i18n-placeholder="@@password"
+        (focus)="onFocusPswEvent()">
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="loading" type="submit" i18n="@@signIn">Sign in <i class="fa fa-spinner fa-spin" *ngIf="loading"></i></button>&nbsp;
+    <div *ngIf="invalidLogin" class="alert alert-danger" i18n>Invalid username and/or password.</div>
+    <div *ngIf="isUserLocked" class="alert alert-danger" i18n>Your account is locked for the next 15 minutes due to several failed login attempts. Please try again later.</div>
+ </form>

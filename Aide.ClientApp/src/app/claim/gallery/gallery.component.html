@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span i18n>Gallery</span>
+        <span class="mat-toolbar-row-spacer"></span>
+        <span>
+            <button type="button" class="btn btn-link" style="padding:0px;" (click)="onShowImageListChange(true)">
+                <mat-icon>view_list</mat-icon>
+            </button>
+        </span>
+        <span>
+            <button type="button" class="btn btn-link" style="padding-left:0px;" (click)="onShowImageListChange(false)">
+                <mat-icon>view_module</mat-icon>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="text-align: center; position: relative;" *ngIf="!_showImageList && _claimId > 0">
+    <ngx-gallery class="ngx-gallery" [options]="galleryOptions" [images]="_galleryImages"></ngx-gallery>
+    <span *ngIf="!_showImageList && _claimId > 0 && _galleryImages.length === 0" i18n>There's no images to show</span>
+</div>

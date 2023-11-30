@@ -1,0 +1,69 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>{{_title}}</span>
+        <span class="mat-toolbar-row-spacer"></span>
+        <span>
+            <button type="button" class="btn btn-link" style="padding:0px;" (click)="onShowImageListChange(true)">
+                <mat-icon>view_list</mat-icon>
+            </button>
+        </span>
+        <span>
+            <button type="button" class="btn btn-link" style="padding-left:0px;" (click)="onShowImageListChange(false)">
+                <mat-icon>view_module</mat-icon>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-card *ngIf="_description?.length > 0" style="padding: 0px;">
+    <mat-card-title style="background-color: antiquewhite;">
+        <span style="font-weight: normal; font-size: small; margin: 5px;">{{_description}}</span>
+    </mat-card-title>
+</mat-card>
+<div class="main-table-container">
+    <mat-table [dataSource]="_claimProbatoryDocuments" class="main-table">
+
+        <!-- Sort Priority Column -->
+        <ng-container matColumnDef="sortPriority">
+            <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.sortPriority}}</mat-cell>
+        </ng-container>
+
+        <!-- ProbatoryDocumentName Column -->
+        <ng-container matColumnDef="probatoryDocument.name">
+            <mat-header-cell *matHeaderCellDef i18n>Document</mat-header-cell>
+            <mat-cell *matCellDef="let row; let i=index;">
+                <mat-chip-list style="padding-right: 10px;" *ngIf="row.media">
+                    <mat-chip color="secondary" selected>
+                        <mat-icon>done</mat-icon>
+                        <span i18n *ngIf="!_isPhoneDevice">Completed</span>
+                    </mat-chip>
+                </mat-chip-list>
+                <span class="document_name">{{row.probatoryDocument.name}}&nbsp;</span>                
+                <span style="padding-right: 5px;" *ngIf="row.media" class="view-section">
+                    ({{row.media?.dateCreated | utctolocal | date:'shortDate'}})
+                    <a mat-stroked-button color="primary" (click)="download(row.media.id, row.probatoryDocument.name, i)" [disabled]="isDownloading[i]" i18n>View</a>
+                </span>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef i18n>Action</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-stroked-button color="primary" *ngIf="_isAllowedToEditOrder && _actionButton === 'upload'"
+                    (click)="openDialog(row.probatoryDocument.name, row.id, row.probatoryDocument.acceptedFileExtensions, row.probatoryDocument.orientation)"
+                    [disabled]="_actionButtonDisabled">
+                    <mat-icon>cloud_upload</mat-icon>
+                    <span i18n="@@uploadButton" *ngIf="!_isPhoneDevice" style="padding-left: 5px; padding-right: 10px;">Upload</span>
+                </button>
+                <button type="button" *ngIf="_isAllowedToEditOrder && _actionButton === 'signature'"
+                    mat-raised-button color="primary" 
+                    (click)="onClickSignatureBtn(row)" i18n
+                    [disabled]="_actionButtonDisabled" class="signature_btn">Signature</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="getDisplayedColumns()" style="display: none"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: getDisplayedColumns();"></mat-row>
+    </mat-table>
+</div>

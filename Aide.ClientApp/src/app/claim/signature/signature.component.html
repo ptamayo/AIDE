@@ -1,0 +1,68 @@
+<div class="main-container">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <span i18n>Customer's signature</span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <!-- <button type="button" mat-raised-button color="primary" (click)="upsert()" [disabled]="saveBtnIsDisabled || !myForm.valid" i18n="@@saveButton">Save</button> -->
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="main-loading-shade" *ngIf="isLoadingPage">
+        <mat-spinner *ngIf="isLoadingPage"></mat-spinner>
+    </div>
+
+    <div class="main-table-container">
+        <div style="padding-left: 50px; padding-right: 50px; padding-top: 20px; padding-bottom: 20px;">
+            <p>Muy Señores Míos (Nuestros):</p>
+            <p>Me (nos) es grato manifestarles que la reclamación que tengo (tenemos) presentada a esa compañía con motivo del accidente en el cual fue implicado el automóvil de mi (nuestra) propiedad, es grato manisfestar que dicha reclamación ha sido debidamente atendida por ustedes y terminada a mi (nuestra) entera satisfacción, en vista de lo cual me (nos) es grato hacer constar por medio de la presente que relevo (relevamos) a ustedes y a sus representantes de cuaquier responsabilidad posterior con motivo de la citada reclamación.</p>
+            <p>Además constato (constatamos) que conozco (conocemos) y entiendo (entendemos) cuáles son los documentos fotocopiados y/o digitalizados por ustedes para fines administrativos del servicio proporcionado. La lista de documentos y fotografías proporcionados se listan a continuación:</p>
+            <!-- <p> -->
+                <ul>
+                    <li *ngFor="let d of listOfDocuments">
+                        {{d.probatoryDocument.name}}
+                    </li>
+                </ul>
+            <!-- </p> -->
+            <p>Sin más de momento, me (nos) es grato repetirme (nos) de ustedes Afmo. (s), Atto. (s) y S.S. (SS).</p>
+        </div>
+        <div [className]="signatureCanvasStyle">
+            <ng-signature-pad
+                [(points)]="signaturePoints"
+                [responsive]="false"
+                [width]="signatureCanvasWidth"
+                [height]="signatureCanvasHeight"
+                doneButtonText="Completar"
+                clearButtonText="Limpiar"
+                format="base64"
+                (done)="submitSignature($event)"
+                [editable]="editableSignaturePad"
+                [showDoneButton]="editableSignaturePad"
+                [showClearButton]="editableSignaturePad"
+                *ngIf="!signatureImage">
+            </ng-signature-pad>
+            <img [src]="signatureImage"
+                [width]="signatureCanvasWidth"
+                *ngIf="signatureImage" />
+        </div>
+        <div class="center-div">
+            <h4>{{claim.customerFullName}}</h4>
+            <span *ngIf="signatureDate">{{signatureDate}}</span>
+            <br><span *ngIf="signatureDateTimeZone" i18n>Time zone</span><span *ngIf="signatureDateTimeZone">: {{signatureDateTimeZone}}</span>
+        </div>
+    </div>
+
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <span>&nbsp;</span>
+            <span class="mat-toolbar-row-spacer"></span>
+            <span>
+                <button type="button" mat-raised-button color="primary" (click)="emailClaimReceipt()" *ngIf="currentUserCanEmailReceipt && signatureImage" i18n>Send Email</button>&nbsp;
+            </span>
+            <span>
+                <button type="button" mat-raised-button color="primary" [disabled]="isLoadingPage" [routerLink]="['/claim/', claimId]" i18n>Go back</button>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
