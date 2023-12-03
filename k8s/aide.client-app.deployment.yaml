@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aide-client-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aide-client-app
+  template:
+    metadata:
+      labels:
+        app: aide-client-app
+    spec:
+      imagePullSecrets:
+        - name: my-registry-key
+      containers:
+        - name: aide-client-app-node
+          image: aideguru/aide-client-app-k8sdev:latest
+          imagePullPolicy: Always
