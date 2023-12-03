@@ -59,8 +59,8 @@ services:
       - aide-api-gateway
   aide-client-app:
     build:
-      context: ./
-      dockerfile: ./dockerfiles/aide.client-app.dockerfile
+      context: ./Aide.ClientApp
+      dockerfile: dockerfiles/aide.client-app.dockerfile
     ports:
       - '4200:80'
     depends_on:

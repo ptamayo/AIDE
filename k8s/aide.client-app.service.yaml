@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aide-client-app-service
+spec:
+  selector:
+    app: aide-client-app
+  ports:
+    - protocol: TCP
+      port: 4200
+      targetPort: 80
+  type: LoadBalancer
